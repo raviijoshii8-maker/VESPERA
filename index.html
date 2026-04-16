@@ -1,0 +1,940 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>VESPERA | Eternal Elegance. Silent Opulence. Sovereign.</title>
+  <!-- Google Fonts: Refined Serif + Clean Sans -->
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --bg: #040308;
+      --surface: #0a0a0f;
+      --surface-elevated: #111116;
+      --text: #ece9e6;
+      --text-soft: #9f9ca7;
+      --text-muted: #514e5a;
+      --accent: #b87c4f;
+      --accent-glow: #cf9a6e;
+      --accent-deep: #7a4c2c;
+      --accent-subtle: #2a211c;
+      --border-light: #24222b;
+      --shadow-sm: 0 12px 28px rgba(0, 0, 0, 0.6);
+      --shadow-lg: 0 25px 50px -12px rgba(0, 0, 0, 0.8);
+      --transition: 0.5s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+      --radius-card: 2px;
+    }
+
+    [data-theme="light"] {
+      --bg: #fef8f0;
+      --surface: #ffffff;
+      --surface-elevated: #faf6f0;
+      --text: #211e1a;
+      --text-soft: #6c675f;
+      --text-muted: #b2aca2;
+      --accent: #c87a4a;
+      --accent-glow: #da9a6e;
+      --accent-deep: #9b5a36;
+      --accent-subtle: #f1e7de;
+      --border-light: #e2d9cf;
+      --shadow-sm: 0 12px 28px rgba(0, 0, 0, 0.04);
+      --shadow-lg: 0 25px 50px -12px rgba(0, 0, 0, 0.08);
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Inter', sans-serif;
+      scroll-behavior: smooth;
+      line-height: 1.5;
+    }
+
+    ::-webkit-scrollbar { width: 3px; }
+    ::-webkit-scrollbar-track { background: var(--surface-elevated); }
+    ::-webkit-scrollbar-thumb { background: var(--accent); border-radius: 2px; }
+
+    /* header - understated power */
+    .vespera-header {
+      position: fixed;
+      width: 100%;
+      top: 0;
+      z-index: 1000;
+      background: rgba(4, 3, 8, 0.92);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--accent);
+      transition: var(--transition);
+    }
+    [data-theme="light"] .vespera-header {
+      background: rgba(254, 248, 240, 0.92);
+    }
+
+    .nav-container {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 1rem 2.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .brand {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2rem;
+      font-weight: 600;
+      letter-spacing: 1px;
+      color: var(--accent-glow);
+      text-transform: uppercase;
+      font-style: italic;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      font-weight: 500;
+      letter-spacing: 2px;
+    }
+    .nav-links a {
+      position: relative;
+      color: var(--text);
+      transition: 0.2s;
+      text-decoration: none;
+      font-family: 'Inter', sans-serif;
+    }
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: -6px;
+      left: 0;
+      width: 0;
+      height: 1.5px;
+      background: var(--accent-glow);
+      transition: 0.25s ease;
+    }
+    .nav-links a:hover::after { width: 100%; }
+
+    .utility-actions {
+      display: flex;
+      gap: 1.5rem;
+      align-items: center;
+    }
+    #themeToggle {
+      background: none;
+      border: none;
+      font-size: 1.2rem;
+      cursor: pointer;
+      color: var(--text);
+      transition: 0.2s;
+    }
+    .cart-icon {
+      position: relative;
+      cursor: pointer;
+      font-size: 1.2rem;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      transition: 0.2s;
+    }
+    .cart-icon:hover { color: var(--accent-glow); }
+    .cart-count {
+      background: var(--accent);
+      color: #040308;
+      font-size: 0.65rem;
+      font-weight: 800;
+      border-radius: 50%;
+      width: 18px;
+      height: 18px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      position: absolute;
+      top: -8px;
+      right: -12px;
+    }
+
+    /* HERO - new visual identity: timeless dusk */
+    .hero-vespera {
+      min-height: 92vh;
+      display: flex;
+      align-items: center;
+      position: relative;
+      background-image: url('https://images.unsplash.com/photo-1512716679859-da19b4b79c7c?q=80&w=1887&auto=format&fit=crop');
+      background-size: cover;
+      background-position: 50% 20%;
+      margin-top: 0;
+    }
+    .hero-vespera::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(115deg, rgba(0,0,0,0.85) 20%, rgba(0,0,0,0.4) 70%);
+      z-index: 1;
+    }
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 680px;
+      padding: 0 8%;
+    }
+    .hero-sub {
+      font-size: 0.65rem;
+      letter-spacing: 6px;
+      text-transform: uppercase;
+      font-weight: 400;
+      margin-bottom: 1.2rem;
+      color: var(--accent-glow);
+    }
+    .hero-main-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(3.5rem, 8vw, 6rem);
+      font-weight: 700;
+      line-height: 1.05;
+      margin-bottom: 1rem;
+      color: #ffffff;
+      text-transform: uppercase;
+      font-style: italic;
+    }
+    .hero-offer {
+      font-size: 0.85rem;
+      font-weight: 400;
+      margin-bottom: 2rem;
+      border-left: 3px solid var(--accent-glow);
+      padding-left: 1.2rem;
+      background: rgba(0,0,0,0.5);
+      backdrop-filter: blur(3px);
+      display: inline-block;
+    }
+
+    .btn-primary {
+      background: transparent;
+      color: var(--accent-glow);
+      border: 1.5px solid var(--accent-glow);
+      padding: 1rem 2.8rem;
+      font-size: 0.7rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      cursor: pointer;
+      transition: var(--transition);
+      display: inline-block;
+      text-decoration: none;
+      backdrop-filter: blur(4px);
+    }
+    .btn-primary:hover {
+      background: var(--accent-glow);
+      color: #040308;
+      border-color: var(--accent-glow);
+      transform: translateY(-2px);
+    }
+
+    .collection-badge {
+      max-width: 1400px;
+      margin: 5rem auto 1.8rem auto;
+      padding: 0 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      flex-wrap: wrap;
+      border-bottom: 2px solid var(--accent);
+      padding-bottom: 1rem;
+    }
+    .collection-badge h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2.4rem;
+      font-weight: 600;
+      letter-spacing: -0.5px;
+      font-style: italic;
+    }
+    .collection-badge p {
+      color: var(--text-soft);
+      font-size: 0.7rem;
+      letter-spacing: 1px;
+    }
+
+    .grid-shop {
+      max-width: 1400px;
+      margin: 2rem auto 6rem auto;
+      padding: 0 2rem;
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
+      gap: 2rem 1.8rem;
+    }
+
+    .product-tile {
+      background: var(--surface);
+      border-radius: var(--radius-card);
+      overflow: hidden;
+      transition: var(--transition);
+      box-shadow: var(--shadow-sm);
+      border: 1px solid var(--border-light);
+    }
+    .product-tile:hover { transform: translateY(-5px); border-color: var(--accent); }
+    .tile-img {
+      position: relative;
+      aspect-ratio: 4 / 5.2;
+      overflow: hidden;
+      background: var(--surface-elevated);
+    }
+    .tile-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.7s ease;
+    }
+    .product-tile:hover .tile-img img { transform: scale(1.04); }
+    .quick-add {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: linear-gradient(to top, rgba(0,0,0,0.9), transparent);
+      padding: 1.2rem;
+      opacity: 0;
+      transition: 0.3s;
+      text-align: center;
+    }
+    .product-tile:hover .quick-add { opacity: 1; }
+    .quick-add button {
+      background: var(--accent);
+      border: none;
+      width: 85%;
+      padding: 0.75rem;
+      font-size: 0.6rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      cursor: pointer;
+      transition: 0.2s;
+      color: #040308;
+      border-radius: 0px;
+    }
+    .quick-add button:hover {
+      background: var(--accent-glow);
+      color: #000;
+    }
+    .product-info {
+      padding: 1.2rem 1rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .product-details h4 {
+      font-size: 0.55rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      color: var(--accent-glow);
+      letter-spacing: 2px;
+    }
+    .product-details h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.2rem;
+      font-weight: 600;
+      margin-top: 5px;
+      letter-spacing: -0.2px;
+    }
+    .price-block { text-align: right; }
+    .current-price { font-weight: 700; font-size: 1rem; letter-spacing: -0.2px; }
+    .old-price { font-size: 0.7rem; text-decoration: line-through; color: var(--text-muted); margin-left: 0.3rem; }
+
+    /* CART SIDEBAR - vespera touch */
+    .cart-overlay {
+      position: fixed;
+      inset: 0;
+      z-index: 2000;
+      background: rgba(0, 0, 0, 0.85);
+      backdrop-filter: blur(8px);
+      visibility: hidden;
+      opacity: 0;
+      transition: 0.3s ease;
+    }
+    .cart-overlay.active {
+      visibility: visible;
+      opacity: 1;
+    }
+    .cart-sidebar {
+      position: fixed;
+      top: 0;
+      right: 0;
+      width: 100%;
+      max-width: 480px;
+      height: 100vh;
+      background: var(--surface);
+      border-left: 2px solid var(--accent);
+      box-shadow: var(--shadow-lg);
+      z-index: 2001;
+      transform: translateX(100%);
+      transition: transform 0.4s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+      display: flex;
+      flex-direction: column;
+    }
+    .cart-overlay.active .cart-sidebar {
+      transform: translateX(0);
+    }
+    .cart-header {
+      padding: 1.5rem;
+      border-bottom: 1px solid var(--border-light);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .cart-header h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.8rem;
+      font-weight: 600;
+      color: var(--accent-glow);
+      text-transform: uppercase;
+      font-style: italic;
+    }
+    .close-cart {
+      background: none;
+      border: none;
+      font-size: 1.4rem;
+      cursor: pointer;
+      color: var(--text-muted);
+      transition: 0.2s;
+    }
+    .close-cart:hover { color: var(--accent-glow); }
+    .cart-items {
+      flex: 1;
+      overflow-y: auto;
+      padding: 1.2rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+    .cart-item {
+      display: flex;
+      gap: 1rem;
+      padding: 0.8rem;
+      background: var(--surface-elevated);
+      border-left: 3px solid var(--accent);
+      position: relative;
+    }
+    .cart-item-img {
+      width: 70px;
+      height: 85px;
+      object-fit: cover;
+    }
+    .cart-item-details {
+      flex: 1;
+    }
+    .cart-item-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1rem;
+      font-weight: 600;
+    }
+    .cart-item-price {
+      font-size: 0.8rem;
+      color: var(--accent-glow);
+      margin-top: 4px;
+    }
+    .cart-item-quantity {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-top: 8px;
+    }
+    .quantity-btn {
+      background: var(--accent-subtle);
+      border: none;
+      width: 26px;
+      height: 26px;
+      cursor: pointer;
+      color: var(--text);
+      font-weight: 700;
+      transition: 0.2s;
+    }
+    .quantity-btn:hover {
+      background: var(--accent);
+      color: #040308;
+    }
+    .cart-item-qty {
+      font-size: 0.85rem;
+      min-width: 20px;
+      text-align: center;
+    }
+    .remove-item {
+      position: absolute;
+      top: 8px;
+      right: 8px;
+      background: none;
+      border: none;
+      color: var(--text-muted);
+      cursor: pointer;
+      font-size: 0.8rem;
+    }
+    .remove-item:hover { color: #c97e5a; }
+    .cart-footer {
+      padding: 1.5rem;
+      border-top: 2px solid var(--accent);
+      background: var(--surface);
+    }
+    .cart-total {
+      display: flex;
+      justify-content: space-between;
+      font-weight: 800;
+      font-size: 1.1rem;
+      margin-bottom: 1.2rem;
+    }
+    .checkout-btn {
+      width: 100%;
+      background: var(--accent);
+      border: none;
+      padding: 1rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      cursor: pointer;
+      transition: 0.2s;
+      color: #040308;
+    }
+    .checkout-btn:hover {
+      background: var(--accent-glow);
+      color: #000;
+    }
+    .empty-cart {
+      text-align: center;
+      color: var(--text-muted);
+      padding: 2rem;
+    }
+
+    footer {
+      background: var(--surface-elevated);
+      margin-top: 3rem;
+      padding: 4rem 2rem;
+      border-top: 1px solid var(--border-light);
+    }
+    .footer-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      text-align: center;
+    }
+    .footer-logo {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2.5rem;
+      font-weight: 600;
+      color: var(--accent-glow);
+      text-transform: uppercase;
+      font-style: italic;
+    }
+    .footer-locations {
+      font-size: 0.65rem;
+      letter-spacing: 4px;
+      color: var(--text-muted);
+      margin: 1rem 0 2rem;
+    }
+
+    @media (max-width: 750px) {
+      .nav-container { flex-direction: column; align-items: center; }
+      .nav-links { gap: 1rem; flex-wrap: wrap; justify-content: center; }
+      .grid-shop { gap: 1rem; }
+      .cart-sidebar { max-width: 100%; }
+    }
+
+    /* MODAL - vespera's velvet threshold */
+    .modal-overlay {
+      position: fixed;
+      inset: 0;
+      z-index: 2100;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 1.5rem;
+      background: rgba(0, 0, 0, 0.94);
+      backdrop-filter: blur(8px);
+      transition: opacity 0.25s ease;
+    }
+    .vespera-modal {
+      background: var(--surface);
+      max-width: 540px;
+      width: 100%;
+      border: 1px solid var(--accent);
+      box-shadow: 0 30px 45px -15px rgba(0,0,0,0.7);
+      padding: 2.2rem 2rem 2.5rem;
+      position: relative;
+      text-align: center;
+    }
+    .modal-close-icon {
+      position: absolute;
+      top: 1.2rem;
+      right: 1.5rem;
+      background: none;
+      border: none;
+      font-size: 1.4rem;
+      cursor: pointer;
+      color: var(--text-muted);
+    }
+    .modal-close-icon:hover { color: var(--accent-glow); }
+    .modal-icon-badge {
+      width: 80px;
+      height: 80px;
+      background: rgba(184, 124, 79, 0.12);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1rem;
+      font-size: 2.5rem;
+      border: 1.5px solid var(--accent);
+      border-radius: 0%;
+      transform: rotate(45deg);
+    }
+    .modal-icon-badge i { transform: rotate(-45deg); }
+    .modal-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2.8rem;
+      font-weight: 700;
+      color: var(--accent-glow);
+      margin-bottom: 0.5rem;
+      text-transform: uppercase;
+      font-style: italic;
+    }
+    .modal-description {
+      color: var(--text-soft);
+      line-height: 1.5;
+      font-size: 0.85rem;
+      margin: 1rem 0;
+    }
+    .modal-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1rem;
+      margin-top: 1.8rem;
+    }
+    .btn-modal-primary {
+      background: var(--accent);
+      border: none;
+      padding: 0.85rem 2rem;
+      font-weight: 600;
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      cursor: pointer;
+      color: #040308;
+    }
+    .btn-modal-secondary {
+      background: transparent;
+      border: 1.5px solid var(--accent);
+      padding: 0.85rem 1.8rem;
+      font-weight: 600;
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      cursor: pointer;
+      color: var(--text);
+    }
+    .modal-fade-out { opacity: 0; pointer-events: none; transition: opacity 0.2s; }
+  </style>
+  
+  <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-SBJZ7C7VV0"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-SBJZ7C7VV0');
+</script>
+  
+</head>
+
+
+  
+<body>
+
+<!-- ENTRY MODAL - VESPERA INVITATION -->
+<div id="entryModal" class="modal-overlay">
+  <div class="vespera-modal">
+    <button id="closeModalBtn" class="modal-close-icon">✕</button>
+    <div class="modal-icon-badge"><i class="fas fa-feather-alt"></i></div>
+    <h2 class="modal-title">VESPERA</h2>
+    <p class="modal-description">Enter the realm of twilight majesty. Where silence speaks louder than gold, and every garment carries the weight of untold stories. Embrace the sovereign stillness.</p>
+    <div class="modal-buttons">
+      <button id="enterBtn" class="btn-modal-primary">ENTER THE VESPER</button>
+      <button id="laterBtn" class="btn-modal-secondary">STAY IN SHADOW</button>
+    </div>
+  </div>
+</div>
+
+<header class="vespera-header">
+  <div class="nav-container">
+    <div class="brand">VESPERA</div>
+    <nav class="nav-links">
+      <a href="#shop">COUTURE</a>
+      <a href="#shop">ATELIER</a>
+      <a href="#shop">NOCTURNE</a>
+      <a href="#">LEGACY</a>
+    </nav>
+    <div class="utility-actions">
+      <button id="themeToggle">☀️</button>
+      <div class="cart-icon" id="cartIcon">
+        <i class="fas fa-shopping-bag"></i>
+        <span class="cart-count" id="cartCount">0</span>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main>
+  <section class="hero-vespera">
+    <div class="hero-content">
+      <div class="hero-sub">Capsule XI — Twilight Archive</div>
+      <h1 class="hero-main-title">Vespera<br />Aeterna</h1>
+      <div class="hero-offer">Exclusive ritual: <strong>15% OFF</strong> on first twilight order</div>
+      <a href="#shop" class="btn-primary">DISCOVER THE RITE →</a>
+    </div>
+  </section>
+
+  <div class="collection-badge" id="shop">
+    <h2>Aeternum · Vol. I</h2>
+    <p>13 artifacts / limited covenant</p>
+  </div>
+
+  <div class="grid-shop" id="productGrid"></div>
+</main>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-logo">VESPERA</div>
+    <div class="footer-locations">LONDON — KYOTO — FLORENCE — DUBAI</div>
+    <p class="copyright" style="font-size:0.6rem; opacity:0.6;">© 2026 VESPERA. ETERNAL ELEGANCE. ALL RIGHTS RESERVED.</p>
+  </div>
+</footer>
+
+<!-- CART SIDEBAR -->
+<div id="cartOverlay" class="cart-overlay">
+  <div class="cart-sidebar">
+    <div class="cart-header">
+      <h3>Vesper Cart</h3>
+      <button class="close-cart" id="closeCartBtn"><i class="fas fa-times"></i></button>
+    </div>
+    <div class="cart-items" id="cartItemsContainer">
+      <div class="empty-cart">Your cart awaits twilight.<br>Select a piece of eternity.</div>
+    </div>
+    <div class="cart-footer" id="cartFooter" style="display: none;">
+      <div class="cart-total">
+        <span>Total</span>
+        <span id="cartTotalPrice">₹0</span>
+      </div>
+      <button class="checkout-btn" id="checkoutBtn">⟡ SECURE RITUAL ⟡</button>
+    </div>
+  </div>
+</div>
+
+<script>
+  // VESPERA COLLECTION — distinct mood, new names and silhouettes
+  const products = [
+    { id: 101, name: "Twilight Trench", category: "OUTERWEAR", original: 11999, discountPrice: 10199, img: "https://images.unsplash.com/photo-1591047139829-d91aecb6caea?q=80&w=600&auto=format&fit=crop", alt: "trench coat" },
+    { id: 102, name: "Umbra Blazer", category: "TAILORING", original: 9999, discountPrice: 8499, img: "https://images.unsplash.com/photo-1594938298603-c8148c4dae35?q=80&w=687&auto=format&fit=crop", alt: "dark blazer" },
+    { id: 103, name: "Spectral Silk Shirt", category: "SHIRTING", original: 3899, discountPrice: 3314, img: "https://images.unsplash.com/photo-1598032895397-b9472444bf93?q=80&w=2070&auto=format&fit=crop", alt: "silk shirt" },
+    { id: 104, name: "Crimson Velvet Gown", category: "EVENING", original: 15999, discountPrice: 13599, img: "https://images.unsplash.com/photo-1595777457583-95e059d581b8?q=80&w=687&auto=format&fit=crop", alt: "velvet gown" },
+    { id: 105, name: "Nocturnal Cargo", category: "BOTTOMS", original: 4799, discountPrice: 4079, img: "https://images.unsplash.com/photo-1594633312681-425c7b97ccd1?q=80&w=600&auto=format&fit=crop", alt: "cargo pants" },
+    { id: 106, name: "Eclipse Cardigan", category: "KNITWEAR", original: 5299, discountPrice: 4504, img: "https://images.unsplash.com/photo-1576566588028-4147f3842f27?q=80&w=764&auto=format&fit=crop", alt: "dark knit" },
+    { id: 107, name: "Starlight Pleats", category: "SKIRTS", original: 3699, discountPrice: 3144, img: "https://images.unsplash.com/photo-1583496661160-fb5886a0aaaa?q=80&w=687&auto=format&fit=crop", alt: "pleated skirt" },
+    { id: 108, name: "Obsidian Leather Jacket", category: "LEATHER", original: 17999, discountPrice: 15299, img: "https://plus.unsplash.com/premium_photo-1661313817350-1fa759c43a3b?q=80&w=1217&auto=format&fit=crop", alt: "leather jacket" },
+    { id: 109, name: "Corset Vesper", category: "TOPS", original: 3499, discountPrice: 2974, img: "https://images.unsplash.com/photo-1515372039744-b8f02a3ae446?q=80&w=688&auto=format&fit=crop", alt: "corset top" },
+    { id: 110, name: "Midnight Denim", category: "DENIM", original: 5799, discountPrice: 4929, img: "https://images.unsplash.com/photo-1541099649105-f69ad21f3246?q=80&w=600&auto=format&fit=crop", alt: "denim" },
+    { id: 111, name: "Celestial Gown", category: "EVENING", original: 20999, discountPrice: 17849, img: "https://images.unsplash.com/photo-1539008835657-9e8e9680c956?q=80&w=687&auto=format&fit=crop", alt: "gown" },
+    { id: 112, name: "Lunar Waistcoat", category: "LAYERING", original: 4199, discountPrice: 3569, img: "https://images.unsplash.com/photo-1591047139829-d91aecb6caea?q=80&w=600&auto=format&fit=crop", alt: "waistcoat" },
+    { id: 113, name: "Dusk Cape", category: "EVENING", original: 14499, discountPrice: 12324, img: "https://images.unsplash.com/photo-1539109136881-3be0616acf4b?q=80&w=687&auto=format&fit=crop", alt: "cape" }
+  ];
+
+  let cart = [];
+
+  const cartOverlay = document.getElementById('cartOverlay');
+  const cartIcon = document.getElementById('cartIcon');
+  const closeCartBtn = document.getElementById('closeCartBtn');
+  const cartItemsContainer = document.getElementById('cartItemsContainer');
+  const cartFooter = document.getElementById('cartFooter');
+  const cartTotalPriceSpan = document.getElementById('cartTotalPrice');
+  const cartCountSpan = document.getElementById('cartCount');
+
+  function saveCart() { localStorage.setItem('vesperaCart', JSON.stringify(cart)); }
+  function loadCart() {
+    const saved = localStorage.getItem('vesperaCart');
+    if (saved) { cart = JSON.parse(saved); }
+    renderCartUI();
+    updateCartCount();
+  }
+
+  function updateCartCount() {
+    const total = cart.reduce((sum, item) => sum + item.quantity, 0);
+    cartCountSpan.innerText = total;
+  }
+
+  function renderCartUI() {
+    if (!cartItemsContainer) return;
+    if (cart.length === 0) {
+      cartItemsContainer.innerHTML = '<div class="empty-cart">Your cart awaits twilight.<br>Select a piece of eternity.</div>';
+      cartFooter.style.display = 'none';
+      updateCartCount();
+      saveCart();
+      return;
+    }
+    cartFooter.style.display = 'block';
+    let html = '';
+    let total = 0;
+    cart.forEach((item) => {
+      const itemTotal = item.price * item.quantity;
+      total += itemTotal;
+      html += `
+        <div class="cart-item" data-id="${item.id}">
+          <img class="cart-item-img" src="${item.img}" alt="${item.name}">
+          <div class="cart-item-details">
+            <div class="cart-item-name">${item.name}</div>
+            <div class="cart-item-price">₹${item.price.toLocaleString('en-IN')}</div>
+            <div class="cart-item-quantity">
+              <button class="quantity-btn dec-qty" data-id="${item.id}">-</button>
+              <span class="cart-item-qty">${item.quantity}</span>
+              <button class="quantity-btn inc-qty" data-id="${item.id}">+</button>
+            </div>
+          </div>
+          <button class="remove-item" data-id="${item.id}"><i class="fas fa-trash-alt"></i></button>
+        </div>
+      `;
+    });
+    cartItemsContainer.innerHTML = html;
+    cartTotalPriceSpan.innerText = `₹${total.toLocaleString('en-IN')}`;
+    
+    document.querySelectorAll('.dec-qty').forEach(btn => {
+      btn.addEventListener('click', () => { const id = parseInt(btn.dataset.id); updateQuantity(id, -1); });
+    });
+    document.querySelectorAll('.inc-qty').forEach(btn => {
+      btn.addEventListener('click', () => { const id = parseInt(btn.dataset.id); updateQuantity(id, 1); });
+    });
+    document.querySelectorAll('.remove-item').forEach(btn => {
+      btn.addEventListener('click', () => { const id = parseInt(btn.dataset.id); removeFromCart(id); });
+    });
+    updateCartCount();
+    saveCart();
+  }
+
+  function updateQuantity(productId, delta) {
+    const index = cart.findIndex(item => item.id === productId);
+    if (index !== -1) {
+      const newQty = cart[index].quantity + delta;
+      if (newQty <= 0) cart.splice(index, 1);
+      else cart[index].quantity = newQty;
+      renderCartUI();
+    }
+  }
+  function removeFromCart(productId) { cart = cart.filter(item => item.id !== productId); renderCartUI(); }
+  
+  function addToCart(productId) {
+    const product = products.find(p => p.id === productId);
+    if (!product) return;
+    const existing = cart.find(item => item.id === productId);
+    if (existing) existing.quantity += 1;
+    else cart.push({ id: product.id, name: product.name, price: product.discountPrice, quantity: 1, img: product.img });
+    renderCartUI();
+    updateCartCount();
+    const btn = document.querySelector(`.add-btn-${productId}`);
+    if (btn) { const orig = btn.innerText; btn.innerText = "✓ ADDED"; setTimeout(() => btn.innerText = orig, 800); }
+    cartOverlay.classList.add('active');
+  }
+
+  function renderProducts() {
+    const container = document.getElementById('productGrid');
+    if (!container) return;
+    container.innerHTML = '';
+    products.forEach(prod => {
+      const card = document.createElement('div');
+      card.className = 'product-tile';
+      const discountPercent = Math.round(((prod.original - prod.discountPrice) / prod.original) * 100);
+      card.innerHTML = `
+        <div class="tile-img">
+          <img src="${prod.img}" alt="${prod.alt || prod.name}" loading="lazy">
+          <div class="quick-add">
+            <button class="add-btn-${prod.id} add-to-cart-btn" data-id="${prod.id}">⟡ ADD TO CART</button>
+          </div>
+        </div>
+        <div class="product-info">
+          <div class="product-details">
+            <h4>${prod.category}</h4>
+            <h3>${prod.name}</h3>
+          </div>
+          <div class="price-block">
+            <span class="current-price">₹${prod.discountPrice.toLocaleString('en-IN')}</span>
+            <span class="old-price">₹${prod.original.toLocaleString('en-IN')}</span>
+            <span style="font-size: 0.6rem; color: var(--accent-glow); display: block; text-align: right;">-${discountPercent}%</span>
+          </div>
+        </div>
+      `;
+      container.appendChild(card);
+    });
+    document.querySelectorAll('.add-to-cart-btn').forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        e.preventDefault();
+        const id = parseInt(btn.getAttribute('data-id'));
+        addToCart(id);
+      });
+    });
+  }
+
+  function initTheme() {
+    const stored = localStorage.getItem('vespera-theme');
+    const systemDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    let theme = stored || (systemDark ? 'dark' : 'light');
+    document.documentElement.setAttribute('data-theme', theme);
+    const toggleBtn = document.getElementById('themeToggle');
+    if (toggleBtn) toggleBtn.textContent = theme === 'dark' ? '☀️' : '🌙';
+  }
+  function toggleTheme() {
+    const current = document.documentElement.getAttribute('data-theme');
+    const next = current === 'dark' ? 'light' : 'dark';
+    document.documentElement.setAttribute('data-theme', next);
+    localStorage.setItem('vespera-theme', next);
+    const toggleBtn = document.getElementById('themeToggle');
+    if (toggleBtn) toggleBtn.textContent = next === 'dark' ? '☀️' : '🌙';
+  }
+
+  // Modal logic (distinct)
+  const modalDiv = document.getElementById('entryModal');
+  const enterBtn = document.getElementById('enterBtn');
+  const laterBtn = document.getElementById('laterBtn');
+  const closeModal = document.getElementById('closeModalBtn');
+  function closeModalFunc() {
+    if (modalDiv) { modalDiv.classList.add('modal-fade-out'); setTimeout(() => { modalDiv.style.display = 'none'; }, 220); }
+  }
+  if (enterBtn) enterBtn.addEventListener('click', closeModalFunc);
+  if (laterBtn) laterBtn.addEventListener('click', closeModalFunc);
+  if (closeModal) closeModal.addEventListener('click', closeModalFunc);
+  if (modalDiv) modalDiv.addEventListener('click', (e) => { if(e.target === modalDiv) closeModalFunc(); });
+
+  // Cart event listeners
+  if (cartIcon) cartIcon.addEventListener('click', () => cartOverlay.classList.add('active'));
+  if (closeCartBtn) closeCartBtn.addEventListener('click', () => cartOverlay.classList.remove('active'));
+  if (cartOverlay) cartOverlay.addEventListener('click', (e) => { if(e.target === cartOverlay) cartOverlay.classList.remove('active'); });
+  document.getElementById('checkoutBtn')?.addEventListener('click', () => {
+    alert('You have sealed the rite. Vespera honors your sovereign journey.');
+    cart = [];
+    renderCartUI();
+    cartOverlay.classList.remove('active');
+  });
+
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+      const href = this.getAttribute('href');
+      if (href === "#" || href === "") return;
+      const target = document.querySelector(href);
+      if (target) { e.preventDefault(); target.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
+    });
+  });
+
+  renderProducts();
+  initTheme();
+  loadCart();
+  document.getElementById('themeToggle')?.addEventListener('click', toggleTheme);
+</script>
+</body>
+</html>
